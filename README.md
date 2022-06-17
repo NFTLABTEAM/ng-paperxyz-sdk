@@ -1,27 +1,51 @@
-# PaperComponents
+# Paperxyz Angular Components
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+## Documentation
 
-## Development server
+https://baxelson12.github.io/paper-angular-client-sdk/components/PaperCreateWalletComponent.html
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+Import SDK module in app:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```javascript
+import { PaperAngularClientSdkModule } from 'angular-client-sdk';
 
-## Build
+imports: [... PaperAngularClientSdkModule],
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Implement in html:
 
-## Running unit tests
+```javascript
+<div style="margin-bottom: 1rem; padding: 0.5rem 0">
+  <label>Email:</label>
+  <input type="text" [formControl]="control" />
+</div>
+<paper-create-wallet
+  [emailAddress]="control.value!"
+  [disabled]="!control.valid"
+  chainName="Rinkeby"
+  (success)="onCreateWalletSuccess($event.walletAddress, $event.emailAddress)"
+  (error)="onCreateWalletError($event.code, $event.error)"
+  (emailVerificationPending)="onCreateWalletVerificationPending()"
+>
+  Verify email
+</paper-create-wallet>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<br />
+<br />
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<paper-pay-with-card
+  *ngIf="email"
+  chainName="Rinkeby"
+  checkoutId="7b2264ab-2533-4bf6-9569-7a5b3af52332"
+  [recipientWalletAddress]="wallet"
+  [emailAddress]="email"
+  [quantity]="1"
+  (paymentSuccess)="onCheckoutPaymentSuccess($event.id)"
+  (transferSuccess)="onCheckoutTransferSuccess($event.id)"
+  (review)="onCheckoutReview($event.id)"
+  (cancel)="onCheckoutCancel()"
+  (error)="onCheckoutError($event.code, $event.error)"
+></paper-pay-with-card>
+```
