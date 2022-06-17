@@ -100,7 +100,40 @@
           }
         }
       }
+    },
+    "angular-client-sdk": {
+      "projectType": "library",
+      "root": "projects/angular-client-sdk",
+      "sourceRoot": "projects/angular-client-sdk/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-client-sdk/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-client-sdk/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-client-sdk/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-client-sdk/src/test.ts",
+            "tsConfig": "projects/angular-client-sdk/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-client-sdk/karma.conf.js"
+          }
+        }
+      }
     }
   },
-  "defaultProject": "paper-components"
+  "cli": {
+    "analytics": false
+  }
 }
