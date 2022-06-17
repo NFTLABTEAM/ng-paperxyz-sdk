@@ -1,0 +1,4 @@
+{
+  "include": ["projects/angular-client-sdk/**/*.ts"],
+  "exclude": []
+}
