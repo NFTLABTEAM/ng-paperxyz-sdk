@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ng-paperxyz-sdk",
+  "dest": "../../dist/ngx-paperxyz-sdk",
   "lib": {
     "entryFile": "src/public-api.ts"
   }

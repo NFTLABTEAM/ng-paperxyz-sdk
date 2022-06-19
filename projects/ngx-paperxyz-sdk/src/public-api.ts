@@ -12,4 +12,4 @@ export * from './lib/enums/error-code.enum';
 
 export * from './lib/components/create-wallet.component';
 export * from './lib/components/pay-with-card.component';
-export * from './lib/ng-paperxyz-sdk.module';
+export * from './lib/ngx-paperxyz-sdk.module';

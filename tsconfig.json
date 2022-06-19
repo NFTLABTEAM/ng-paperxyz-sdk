@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "ng-paperxyz-sdk": ["dist/ng-paperxyz-sdk"]
+      "@nftlabsupplies/ngx-paperxyz-sdk": ["dist/ngx-paperxyz-sdk"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

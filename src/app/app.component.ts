@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { PaperSDKErrorCode } from 'ng-paperxyz-sdk';
+import { PaperSDKErrorCode } from '@nftlabsupplies/ngx-paperxyz-sdk';
 
 @Component({
   selector: 'app-root',

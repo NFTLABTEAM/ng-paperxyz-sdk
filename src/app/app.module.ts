@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgPaperXYZSdk } from 'ng-paperxyz-sdk';
+import { NgxPaperXYZSdk } from '@nftlabsupplies/ngx-paperxyz-sdk';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ReactiveFormsModule, NgPaperXYZSdk],
+  imports: [BrowserModule, ReactiveFormsModule, NgxPaperXYZSdk],
   providers: [],
   bootstrap: [AppComponent],
 })

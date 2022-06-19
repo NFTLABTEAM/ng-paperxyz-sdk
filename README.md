@@ -15,14 +15,14 @@ easily onboards users without wallets or cryptocurrencies.
 
 ## Documentation
 
-[Documentation](https://nftlabteam.github.io/ng-paperxyz-sdk/index.html)
+[Documentation](https://nftlabteam.github.io/ngx-paperxyz-sdk/index.html)
 
 ## Installation
 
-Install ng-paperxyz-sdk with npm:
+Install ngx-paperxyz-sdk with npm:
 
 ```bash
-npm i @nftlabsupplies/ng-paperxyz-sdk
+npm i @nftlabsupplies/ngx-paperxyz-sdk
 ```
 
 ## Usage/Examples
@@ -30,9 +30,9 @@ npm i @nftlabsupplies/ng-paperxyz-sdk
 Import SDK module in app:
 
 ```javascript
-import { PaperAngularClientSdkModule } from 'angular-client-sdk';
+import { NgxPaperXYZSdk } from '@nftlabsupplies/ngx-paperxyz-sdkk';
 
-imports: [... PaperAngularClientSdkModule],
+imports: [..., NgxPaperXYZSdk],
 ```
 
 Implement in html:

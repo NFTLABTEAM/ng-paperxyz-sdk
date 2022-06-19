@@ -91,23 +91,23 @@
         }
       }
     },
-    "ng-paperxyz-sdk": {
+    "@nftlabsupplies/ngx-paperxyz-sdk": {
       "projectType": "library",
-      "root": "projects/ng-paperxyz-sdk",
-      "sourceRoot": "projects/ng-paperxyz-sdk/src",
+      "root": "projects/ngx-paperxyz-sdk",
+      "sourceRoot": "projects/ngx-paperxyz-sdk/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ng-paperxyz-sdk/ng-package.json"
+            "project": "projects/ngx-paperxyz-sdk/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-paperxyz-sdk/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-paperxyz-sdk/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-paperxyz-sdk/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-paperxyz-sdk/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -115,9 +115,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-paperxyz-sdk/src/test.ts",
-            "tsConfig": "projects/ng-paperxyz-sdk/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-paperxyz-sdk/karma.conf.js"
+            "main": "projects/ngx-paperxyz-sdk/src/test.ts",
+            "tsConfig": "projects/ngx-paperxyz-sdk/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-paperxyz-sdk/karma.conf.js"
           }
         }
       }
