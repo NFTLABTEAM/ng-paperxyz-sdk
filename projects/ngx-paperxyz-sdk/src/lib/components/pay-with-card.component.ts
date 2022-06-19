@@ -1,9 +1,10 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, ElementRef, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { PAPER_APP_URL } from '../constants/paper-app-url';
 import { PaperPayWithCardInputs } from '../interfaces/pay-with-card-inputs.interface';
 import { PaperSDKPayWithCardStyleOptions } from '../interfaces/style-options.interface';
 import { PaperEventsHandlerService } from '../services/events-handler.service';
+import { PaperModuleConfig, PAPER_CONFIG_TOKEN } from '../tokens/config.token';
 
 @Component({
   standalone: true,
@@ -16,10 +17,6 @@ export class PaperPayWithCardComponent implements OnInit {
   /** Shorthand concatenation of all inputs */
   @Input() set config(config: PaperPayWithCardInputs) {
     this._config = { ...config, options: { ...config.options } };
-  }
-  /** Checkout ID from Paper */
-  @Input() set checkoutId(checkoutId: string) {
-    this._config = { ...this._config, checkoutId };
   }
   /** Receiving wallet address */
   @Input() set recipientWalletAddress(recipientWalletAddress: string) {
@@ -40,10 +37,6 @@ export class PaperPayWithCardComponent implements OnInit {
   /** Checkout style configurations */
   @Input() set options(options: PaperSDKPayWithCardStyleOptions) {
     this._config = { ...this._config, options };
-  }
-  /** Current network name */
-  @Input() set chainName(chainName: string) {
-    this._config = { ...this._config, chainName };
   }
 
   /** Emit notification on successful payment */
@@ -75,10 +68,13 @@ export class PaperPayWithCardComponent implements OnInit {
   }
 
   constructor(
+    @Inject(PAPER_CONFIG_TOKEN) private configToken: PaperModuleConfig,
     private renderer: Renderer2,
     private element: ElementRef,
     private eventsHandler: PaperEventsHandlerService
-  ) {}
+  ) {
+    this._config = { ...this._config, ...this.configToken };
+  }
 
   ngOnInit(): void {
     this.payWithCardIFrame = this.renderer.createElement('iframe');

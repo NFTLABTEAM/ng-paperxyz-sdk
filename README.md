@@ -32,7 +32,7 @@ Import SDK module in app:
 ```javascript
 import { NgxPaperXYZSdk } from '@nftlabsupplies/ngx-paperxyz-sdkk';
 
-imports: [..., NgxPaperXYZSdk],
+imports: [..., NgxPaperXYZSdk.forRoot({ chainName: "Rinkeby", checkoutId: 'your-checkout-id' })],
 ```
 
 Implement in html:
@@ -45,7 +45,6 @@ Implement in html:
 <paper-create-wallet
   [emailAddress]="control.value!"
   [disabled]="!control.valid"
-  chainName="Rinkeby"
   (success)="onCreateWalletSuccess($event.walletAddress, $event.emailAddress)"
   (error)="onCreateWalletError($event.code, $event.error)"
   (emailVerificationPending)="onCreateWalletVerificationPending()"
@@ -58,8 +57,6 @@ Implement in html:
 
 <paper-pay-with-card
   *ngIf="email"
-  chainName="Rinkeby"
-  checkoutId="7b2264ab-2533-4bf6-9569-7a5b3af52332"
   [recipientWalletAddress]="wallet"
   [emailAddress]="email"
   [quantity]="1"

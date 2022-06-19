@@ -53,7 +53,7 @@ easily onboards users without wallets or cryptocurrencies.</p>
 <p>Import SDK module in app:</p>
 <div><pre class="line-numbers"><code class="language-javascript">import { NgxPaperXYZSdk } from &#39;&#64;nftlabsupplies/ngx-paperxyz-sdkk&#39;;
 
-imports: [..., NgxPaperXYZSdk],</code></pre></div><p>Implement in html:</p>
+imports: [..., NgxPaperXYZSdk.forRoot({ chainName: &quot;Rinkeby&quot;, checkoutId: &#39;your-checkout-id&#39; })],</code></pre></div><p>Implement in html:</p>
 <div><pre class="line-numbers"><code class="language-javascript">&lt;div style=&quot;margin-bottom: 1rem; padding: 0.5rem 0&quot;&gt;
   &lt;label&gt;Email:&lt;/label&gt;
   &lt;input type=&quot;text&quot; [formControl]=&quot;control&quot; /&gt;
@@ -61,7 +61,6 @@ imports: [..., NgxPaperXYZSdk],</code></pre></div><p>Implement in html:</p>
 &lt;paper-create-wallet
   [emailAddress]=&quot;control.value!&quot;
   [disabled]=&quot;!control.valid&quot;
-  chainName=&quot;Rinkeby&quot;
   (success)=&quot;onCreateWalletSuccess($event.walletAddress, $event.emailAddress)&quot;
   (error)=&quot;onCreateWalletError($event.code, $event.error)&quot;
   (emailVerificationPending)=&quot;onCreateWalletVerificationPending()&quot;
@@ -74,8 +73,6 @@ imports: [..., NgxPaperXYZSdk],</code></pre></div><p>Implement in html:</p>
 
 &lt;paper-pay-with-card
   *ngIf=&quot;email&quot;
-  chainName=&quot;Rinkeby&quot;
-  checkoutId=&quot;7b2264ab-2533-4bf6-9569-7a5b3af52332&quot;
   [recipientWalletAddress]=&quot;wallet&quot;
   [emailAddress]=&quot;email&quot;
   [quantity]=&quot;1&quot;

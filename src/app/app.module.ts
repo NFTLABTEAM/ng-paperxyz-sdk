@@ -7,7 +7,14 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ReactiveFormsModule, NgxPaperXYZSdk],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    NgxPaperXYZSdk.forRoot({
+      chainName: 'Rinkeby',
+      checkoutId: '7b2264ab-2533-4bf6-9569-7a5b3af52332',
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
