@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { PaperSDKErrorCode } from 'angular-client-sdk';
+import { PaperSDKErrorCode } from 'ng-paperxyz-sdk';
 
 @Component({
   selector: 'app-root',
