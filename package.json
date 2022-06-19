@@ -10,7 +10,7 @@
     "test": "ng test",
     "docs:generate": "compodoc -p tsconfig.doc.json",
     "copy-libdocs": "copyfiles -V -E README.md dist/ngx-paperxyz-sdk && copyfiles -V -E README.md projects/ngx-paperxyz-sdk",
-    "publish:lib": "cd dist/ngx-paperxyz-sdk && npm publish",
+    "publish:lib": "cd dist/ngx-paperxyz-sdk && npm publish --access public",
     "release:major": "npm run version:major && npm run build:lib && npm run publish:lib",
     "release:minor": "npm run version:minor && npm run build:lib && npm run publish:lib",
     "release:patch": "npm run version:patch && npm run build:lib && npm run publish:lib",
