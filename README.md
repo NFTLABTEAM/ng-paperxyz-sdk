@@ -1,10 +1,31 @@
-# Paperxyz Angular Components
+<p align="center">
+    <br />
+    <a href="https://paper.xyz"><img src="./src/assets/paper-logo.svg" width="100" alt=""/></a>
+    <br />
+</p>
+<h1 align="center">(Unofficial) Paper Angular SDK</h1>
+<p align="center">
+	<!-- TODO: Update -->
+    <!-- <a href="https://www.npmjs.com/package/@paperxyz/react-client-sdk"><img src="https://img.shields.io/github/package-json/v/paperxyz/react-client-sdk?color=red&label=npm&logo=npm" alt="npm version"/></a> -->
+    <a href="https://discord.gg/mnUa29J2Fp"><img alt="Join our Discord!" src="https://img.shields.io/discord/936354866358546453.svg?color=7289da&label=discord&logo=discord&style=flat"/></a>
+</p>
+
+[Paper](https://paper.xyz) is a developer-first NFT checkout solution that
+easily onboards users without wallets or cryptocurrencies.
 
 ## Documentation
 
-https://baxelson12.github.io/paper-angular-client-sdk/components/PaperCreateWalletComponent.html
+[Documentation](https://nftlabteam.github.io/ng-paperxyz-sdk/index.html)
 
-## Usage
+## Installation
+
+Install ng-paperxyz-sdk with npm:
+
+```bash
+npm i @nftlabsupplies/ng-paperxyz-sdk
+```
+
+## Usage/Examples
 
 Import SDK module in app:
 
