@@ -22,13 +22,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -89,35 +84,30 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }
       }
     },
-    "angular-client-sdk": {
+    "ng-paperxyz-sdk": {
       "projectType": "library",
-      "root": "projects/angular-client-sdk",
-      "sourceRoot": "projects/angular-client-sdk/src",
+      "root": "projects/ng-paperxyz-sdk",
+      "sourceRoot": "projects/ng-paperxyz-sdk/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/angular-client-sdk/ng-package.json"
+            "project": "projects/ng-paperxyz-sdk/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/angular-client-sdk/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-paperxyz-sdk/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/angular-client-sdk/tsconfig.lib.json"
+              "tsConfig": "projects/ng-paperxyz-sdk/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -125,9 +115,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-client-sdk/src/test.ts",
-            "tsConfig": "projects/angular-client-sdk/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-client-sdk/karma.conf.js"
+            "main": "projects/ng-paperxyz-sdk/src/test.ts",
+            "tsConfig": "projects/ng-paperxyz-sdk/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-paperxyz-sdk/karma.conf.js"
           }
         }
       }

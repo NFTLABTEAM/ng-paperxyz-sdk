@@ -11,4 +11,4 @@ import { PaperPayWithCardService } from './services/pay-with-card.service';
   providers: [PaperEventsHandlerService, PaperCreateWalletService, PaperPayWithCardService],
   exports: [PaperCreateWalletComponent, PaperPayWithCardComponent],
 })
-export class PaperAngularClientSdkModule {}
+export class NgPaperXYZSdk {}

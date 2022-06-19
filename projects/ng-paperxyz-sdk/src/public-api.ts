@@ -1,5 +1,5 @@
 /*
- * Public API Surface of angular-client-sdk
+ * Public API Surface of ng-paperxyz-sdk
  */
 
 export * from './lib/interfaces/error.interface';
@@ -12,4 +12,4 @@ export * from './lib/enums/error-code.enum';
 
 export * from './lib/components/create-wallet.component';
 export * from './lib/components/pay-with-card.component';
-export * from './lib/angular-client-sdk.module';
+export * from './lib/ng-paperxyz-sdk.module';
