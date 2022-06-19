@@ -31,21 +31,93 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="papercomponents">PaperComponents</h1>
-<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 13.2.6.</p>
-<h2 id="development-server">Development server</h2>
-<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
-<h2 id="code-scaffolding">Code scaffolding</h2>
-<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
-<h2 id="build">Build</h2>
-<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.</p>
-<h2 id="running-unit-tests">Running unit tests</h2>
-<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
-<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
-<p>Run <code>ng e2e</code> to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.</p>
-<h2 id="further-help">Further help</h2>
-<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
+<p align="center">
+    <br />
+    <a href="https://paper.xyz"><img src="./src/assets/paper-logo.svg" width="100" alt=""/></a>
+    <br />
+</p>
+<h1 align="center">(Unofficial) Paper Angular SDK</h1>
+<p align="center">
+    <!-- TODO: Update -->
+    <!-- <a href="https://www.npmjs.com/package/@paperxyz/react-client-sdk"><img src="https://img.shields.io/github/package-json/v/paperxyz/react-client-sdk?color=red&label=npm&logo=npm" alt="npm version"/></a> -->
+    <a href="https://discord.gg/mnUa29J2Fp"><img alt="Join our Discord!" src="https://img.shields.io/discord/936354866358546453.svg?color=7289da&label=discord&logo=discord&style=flat"/></a>
+</p>
 
+<p><a href="https://paper.xyz">Paper</a> is a developer-first NFT checkout solution that
+easily onboards users without wallets or cryptocurrencies.</p>
+<h2 id="documentation">Documentation</h2>
+<p><a href="https://nftlabteam.github.io/ng-paperxyz-sdk/index.html">Documentation</a></p>
+<h2 id="installation">Installation</h2>
+<p>Install ng-paperxyz-sdk with npm:</p>
+<div><pre class="line-numbers"><code class="language-bash">npm i &#64;nftlabsupplies/ng-paperxyz-sdk</code></pre></div><h2 id="usageexamples">Usage/Examples</h2>
+<p>Import SDK module in app:</p>
+<div><pre class="line-numbers"><code class="language-javascript">import { PaperAngularClientSdkModule } from &#39;angular-client-sdk&#39;;
+
+imports: [... PaperAngularClientSdkModule],</code></pre></div><p>Implement in html:</p>
+<div><pre class="line-numbers"><code class="language-javascript">&lt;div style=&quot;margin-bottom: 1rem; padding: 0.5rem 0&quot;&gt;
+  &lt;label&gt;Email:&lt;/label&gt;
+  &lt;input type=&quot;text&quot; [formControl]=&quot;control&quot; /&gt;
+&lt;/div&gt;
+&lt;paper-create-wallet
+  [emailAddress]=&quot;control.value!&quot;
+  [disabled]=&quot;!control.valid&quot;
+  chainName=&quot;Rinkeby&quot;
+  (success)=&quot;onCreateWalletSuccess($event.walletAddress, $event.emailAddress)&quot;
+  (error)=&quot;onCreateWalletError($event.code, $event.error)&quot;
+  (emailVerificationPending)=&quot;onCreateWalletVerificationPending()&quot;
+&gt;
+  Verify email
+&lt;/paper-create-wallet&gt;
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+&lt;paper-pay-with-card
+  *ngIf=&quot;email&quot;
+  chainName=&quot;Rinkeby&quot;
+  checkoutId=&quot;7b2264ab-2533-4bf6-9569-7a5b3af52332&quot;
+  [recipientWalletAddress]=&quot;wallet&quot;
+  [emailAddress]=&quot;email&quot;
+  [quantity]=&quot;1&quot;
+  (paymentSuccess)=&quot;onCheckoutPaymentSuccess($event.id)&quot;
+  (transferSuccess)=&quot;onCheckoutTransferSuccess($event.id)&quot;
+  (review)=&quot;onCheckoutReview($event.id)&quot;
+  (cancel)=&quot;onCheckoutCancel()&quot;
+  (error)=&quot;onCheckoutError($event.code, $event.error)&quot;
+&gt;&lt;/paper-pay-with-card&gt;</code></pre></div><p>Implement in component:</p>
+<div><pre class="line-numbers"><code class="language-javascript">  control = new FormControl(&#39;&#39;, [Validators.required, Validators.email]);
+  email = &#39;&#39;;
+  wallet = &#39;&#39;;
+
+  onCreateWalletSuccess(walletAddress: string, emailAddress: string): void {
+    console.log(&#39;App: Create wallet handler: Success.&#39;, walletAddress, emailAddress);
+    this.email = emailAddress;
+    this.wallet = walletAddress;
+  }
+
+  onCreateWalletError(code: PaperSDKErrorCode, error: Error): void {
+    console.log(&#39;App: Create wallet handler: Error.&#39;, code, error);
+  }
+
+  onCreateWalletVerificationPending(): void {
+    console.log(&#39;App: Create wallet handler: Pending email verification.&#39;);
+  }
+
+  onCheckoutPaymentSuccess(id: string): void {
+    console.log(&#39;App: Checkout payment success.&#39;, id);
+  }
+  onCheckoutTransferSuccess(id: string): void {
+    console.log(&#39;App: Checkout transfer success.&#39;, id);
+  }
+  onCheckoutReview(id: string): void {
+    console.log(&#39;App: Checkout review.&#39;, id);
+  }
+  onCheckoutCancel(): void {
+    console.log(&#39;App: Checkout cancel.&#39;);
+  }
+  onCheckoutError(code: PaperSDKErrorCode, error: Error): void {
+    console.log(&#39;App: Checkout error.&#39;, code, error);
+  }</code></pre></div>
 
 
 
