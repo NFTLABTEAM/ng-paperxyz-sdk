@@ -18,7 +18,7 @@
     "version:minor": "npm --no-git-tag-version version minor && cd projects/ngx-paperxyz-sdk && npm --no-git-tag-version version minor",
     "version:patch": "npm --no-git-tag-version version patch && cd projects/ngx-paperxyz-sdk && npm --no-git-tag-version version patch"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^14.0.1",
     "@angular/common": "^14.0.1",
