@@ -1,7 +1,8 @@
-import { Component, ElementRef, Input, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Inject, Input, Output, Renderer2 } from '@angular/core';
 import { PAPER_APP_URL } from '../constants/paper-app-url';
 import { HttpParams } from '@angular/common/http';
 import { PaperEventsHandlerService } from '../services/events-handler.service';
+import { PaperModuleConfig, PAPER_CONFIG_TOKEN } from '../tokens/config.token';
 
 @Component({
   standalone: true,
@@ -15,8 +16,6 @@ import { PaperEventsHandlerService } from '../services/events-handler.service';
 export class PaperCreateWalletComponent {
   /** Paper wallet email */
   @Input() emailAddress!: string;
-  /** Current network name */
-  @Input() chainName!: string;
   /** Button disabled state */
   @Input() disabled = false;
   /** Emit notification on successful email verification */
@@ -28,17 +27,18 @@ export class PaperCreateWalletComponent {
 
   /** src for iFrame */
   private get requestURL(): string {
-    if (!this.emailAddress || !this.chainName) {
+    if (!this.emailAddress || !this.configToken.chainName) {
       console.warn('CreateWallet: Accessing iFrame URL with missing data.');
     }
     const params = new HttpParams()
       .set('email', this.emailAddress)
-      .set('chainName', this.chainName)
+      .set('chainName', this.configToken.chainName)
       .set('date', Date.now().toString());
     return `${PAPER_APP_URL}/sdk/v1/verify-email?${params.toString()}`;
   }
 
   constructor(
+    @Inject(PAPER_CONFIG_TOKEN) private configToken: PaperModuleConfig,
     private renderer: Renderer2,
     private element: ElementRef,
     private eventsHandler: PaperEventsHandlerService
