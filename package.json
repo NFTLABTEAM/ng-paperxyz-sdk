@@ -5,9 +5,18 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:lib": "ng build ng-paperxyz-sdk --configuration production && npm run copy-libdocs && npm run docs:generate",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "docs:generate": "compodoc -p tsconfig.doc.json"
+    "docs:generate": "compodoc -p tsconfig.doc.json",
+    "copy-libdocs": "copyfiles -V -E README.md dist/ng-paperxyz-sdk",
+    "publish:lib": "cd dist/ng-paperxyz-sdk && npm publish",
+    "release:major": "npm run version:major && npm run build:lib && npm run publish:lib",
+    "release:minor": "npm run version:minor && npm run build:lib && npm run publish:lib",
+    "release:patch": "npm run version:patch && npm run build:lib && npm run publish:lib",
+    "version:major": "npm --no-git-tag-version version major && cd projects/ng-paperxyz-sdk && npm --no-git-tag-version version major",
+    "version:minor": "npm --no-git-tag-version version minor && cd projects/ng-paperxyz-sdk && npm --no-git-tag-version version minor",
+    "version:patch": "npm --no-git-tag-version version patch && cd projects/ng-paperxyz-sdk && npm --no-git-tag-version version patch"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +39,7 @@
     "@compodoc/compodoc": "^1.1.19",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
