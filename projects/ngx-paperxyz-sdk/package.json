@@ -1,6 +1,24 @@
 {
   "name": "@nftlabsupplies/ngx-paperxyz-sdk",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NFTLABTEAM/ngx-paperxyz-sdk"
+  },
+  "keywords": [
+    "paper",
+    "paperxyz",
+    "client sdk",
+    "checkout",
+    "crypto",
+    "web3"
+  ],
+  "author": "no-op.eth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NFTLABTEAM/ngx-paperxyz-sdk/issues"
+  },
+  "homepage": "https://nftlabteam.github.io/ngx-paperxyz-sdk/overview.html",
   "peerDependencies": {
     "@angular/common": "^14.0.0",
     "@angular/core": "^14.0.0"
